@@ -28,50 +28,35 @@
 \addbibresource{./referanser.bib}
 
 % ------ Metadata ------
-\newcommand{\institution}{FHS/Cyberingeniørskolen}
-\newcommand{\laboratory}{Elektronikklaboratoriet}
-\newcommand{\coursecode}{ING2508 \; Kretsteknikk}
-\newcommand{\assignmentno}{01}
-\newcommand{\assignmenttype}{OBLIGATORISK OPPGAVE}
-\newcommand{\assignmenttitle}{DIODER}
+\newcommand{\institution}{Cyberingeniørskolen}
+\newcommand{\coursecode}{ELE1000 Elektronikk}
+\newcommand{\assignmenttype}{OBLIG 01}
+\newcommand{\assignmenttitle}{DIODES IN CIRCUITS}
+\newcommand{\assignmentno}{1}
 \newcommand{\studentname}{Tor Johan Aleksandersen}
-\newcommand{\partnername}{ }
-\newcommand{\class}{VING 78}
-\newcommand{\labdate}{20. mars 2026}
+\newcommand{\class}{Elektronikk}
 \newcommand{\submissiondate}{\today}
 
 \begin{document}
 
 \input{frontpage}
 
-\pagenumbering{Roman}
-\setcounter{page}{1}
-
-\input{sections/sammendrag}
-\clearpage
-
-\tableofcontents
-\clearpage
-
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
-\input{sections/innledning}
+\input{sections/oppgave_01.tex}
 \clearpage
 
-\input{sections/instrumenter}
+\input{sections/oppgave_02.tex}
 \clearpage
 
-\input{sections/teori}
+\input{sections/oppgave_03.tex}
 \clearpage
 
-\input{sections/resultater}
+\input{sections/oppgave_04.tex}
 \clearpage
 
-\input{sections/diskusjon}
-\clearpage
-
-\input{sections/konklusjon}
+\input{sections/oppgave_05.tex}
 \clearpage
 
 \printbibliography[heading=bibintoc,title={Referanser}]

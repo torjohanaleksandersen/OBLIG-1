@@ -1,0 +1,83 @@
+\section{Task 4}
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz}[american voltages]
+
+    % Nodes
+    \node[circle, draw=black, fill=none, thick, inner sep=2pt] (Vtop) at (-3,1.5) {};
+    \node[circle, draw=black, fill=none, thick, inner sep=2pt] (Vbot) at (-3,-1.5) {};
+
+    \node[circle, fill=black, inner sep=0pt] (N1) at (-1,1.5) {};
+    \node[circle, fill=black, inner sep=0pt] (N2) at (2,1.5) {};
+    \node[circle, fill=black, inner sep=0pt] (N3) at (2,-1.5) {};
+    
+
+    % Voltage source
+    \draw (Vtop) to[V=$20\,\mathrm{V}$] (Vbot);
+
+    % Bottom rail
+    \draw (Vbot) -- (N3);
+
+    % Series resistor
+    \draw (Vtop) -- (N1)
+          to[R=$R_S$] (N2);
+
+    % Top wire to load
+    \draw (N2) -- ++(2,0) coordinate (TopR);
+    \draw (N3) -- ++(2,0) coordinate (TopB);
+
+    % Zener diode branch
+    \draw (N3) to[zzD, l=$Z$] (N2);
+
+    % Load resistor
+    \draw (TopR) to[R=$R_L$] (TopB);
+
+\end{circuitikz}
+\caption{Zener diode voltage regulator circuit.}
+\label{fig:zener_regulator}
+\end{figure}
+
+\noindent
+With the given values.
+\[
+R_S = 220\Omega \quad U_Z = 10V \quad P_{Zmax} = 430mW
+\]
+
+\subsection{a. $R_L = 180\Omega$}
+
+\[
+\begin{aligned}
+    U_{RL} &= 20 \cdot \frac{R_L}{R_S + R_L} = 9V, \quad \text{zenor diode stays open} \\
+    I_{RL} &= \frac{9V}{180\Omega} = 50mA \\
+    I_Z &= 0A \quad I_{RS} = I_{RL} = 50mA
+\end{aligned}
+\]
+
+\subsection{b. $R_L = 470\Omega$}
+\[
+\begin{aligned}
+    U_{RL} &= 20 \cdot \frac{R_L}{R_S + R_L} = 13.62V, \quad \text{zenor diode turns on} \\
+    U_{RL} &= U_Z = 10V \\
+    I_{RL} &= \frac{10V}{470\Omega} = 21mA \\
+    I_{RS} &= \frac{20V - 10V}{220\Omega} = 45mA \\
+    I_Z &= 45mA - 21mA = 24mA
+\end{aligned}
+\]
+
+\subsection{c. $R_L$ at max zenor power}
+\[
+\begin{aligned}
+    P_{Z\uparrow} &= V_Z \cdot I_Z \\
+    430mW &= 10V \cdot I_Z \\
+    I_Z &= 43mA \\
+    I_{RS} &= 45mA \\
+    R_L &= \frac{10V}{45mA - 43mA} = 5k\Omega
+\end{aligned}
+\]
+
+\subsection{d. smallest value for $R_L$}
+We can clearly see that input voltage is double the zenor voltage, in a perfect resistor dividing network. That means that the load resistanse must equal the input resistance. We can also calculate it as below.
+\[
+R_{L\downarrow} = \frac{V_Z R_S}{V_i - V_Z} = 220\Omega
+\]

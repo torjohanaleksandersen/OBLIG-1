@@ -1,0 +1,164 @@
+\section{Task 1}
+
+\subsection{a)}
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz}[american voltages]
+
+    % Nodes
+    \node[circle, draw=black, fill=none, thick, inner sep=2pt] (V1) at (-3,0) {};
+    \node[circle, fill=black, inner sep=0pt] (N1) at (-1,0) {};
+    \node[circle, fill=black, inner sep=0pt] (N2) at (2,0) {};
+    \node[circle, draw=black, fill=none, thick, inner sep=2pt] (V2) at (5,0) {};
+
+    % Top and bottom branch nodes
+    \node[circle, fill=black, inner sep=0pt] (T1) at (-1,1.5) {};
+    \node[circle, fill=black, inner sep=0pt] (T2) at (2,1.5) {};
+    \node[circle, fill=black, inner sep=0pt] (B1) at (-1,-1.5) {};
+    \node[circle, fill=black, inner sep=0pt] (B2) at (2,-1.5) {};
+
+    % Labels
+    \node[left] at (V1) {+10V};
+    \node[right] at (V2) {+6V};
+    \node at (2.3,0.3) {$U_0$};
+
+    % Left diode + current
+    \draw (V1) to[short, -, i^=$I$] (-2,0)
+          to[D, l_=Si] (N1);
+
+    % Vertical connections (parallel network)
+    \draw (N1) -- (T1);
+    \draw (N1) -- (B1);
+    \draw (N2) -- (T2);
+    \draw (N2) -- (B2);
+
+    % Parallel diodes
+    \draw (T1) to[D, l=Ge] (T2);
+    \draw (B1) to[D, l=Si] (B2);
+
+    % Resistor to right source
+    \draw (N2) to[R=$3\,\mathrm{k}\Omega$] (V2);
+
+\end{circuitikz}
+\caption{Diodekrets med parallelle grener og seriemotstand.}
+\label{fig:diodekrets}
+\end{figure}
+
+\noindent
+Since theres a definite enough voltage coming from the node on the left we can assume the first diode turns on and current goes. In the parallell branch we have two diodes, since the voltage difference over the parallell must equal, the $Ge$ diode must open first since it has lower threshold at $0.3V$ rather than $0.7$. The circuit change state to as shown under.
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz}[american voltages]
+
+    % Nodes
+    \node[circle, draw=black, fill=none, thick, inner sep=2pt] (V1) at (-3,0) {};
+    \node[circle, fill=black, inner sep=0pt] (N1) at (-1,0) {};
+    \node[circle, fill=black, inner sep=0pt] (N2) at (2,0) {};
+    \node[circle, draw=black, fill=none, thick, inner sep=2pt] (V2) at (5,0) {};
+
+    % Top and bottom branch nodes
+    \node[circle, fill=black, inner sep=0pt] (T1) at (-1,1.5) {};
+    \node[circle, fill=black, inner sep=0pt] (T2) at (2,1.5) {};
+    \node[circle, fill=black, inner sep=0pt] (B1) at (-1,-1.5) {};
+    \node[circle, fill=black, inner sep=0pt] (B2) at (2,-1.5) {};
+
+    % Labels
+    \node[left] at (V1) {+10V};
+    \node[right] at (V2) {+6V};
+    \node at (2.3,0.3) {$U_0$};
+
+    % Left diode (0.7V drop)
+    \draw (V1) to[short, -, i^=$I$] (-2,0)
+          to[D, l_=0.7\,V] (N1);
+
+    % Vertical connections
+    \draw (N1) -- (T1);
+    \draw (N2) -- (T2);
+
+    % Top diode (Ge ON, 0.3V)
+    \draw (T1) to[D, l=0.3\,V] (T2);
+
+    % Bottom branch (open circuit)
+    \draw (B1) -- ++(1,0) node[midway, below]{open};
+
+    % Connect lower nodes visually (but not electrically through diode)
+    \draw (N1) -- (B1);
+    \draw (N2) -- (B2);
+
+    % Resistor
+    \draw (N2) to[R=$3\,\mathrm{k}\Omega$] (V2);
+
+\end{circuitikz}
+\caption{Diodekrets med aktiv Ge-diode og sperret Si-diode.}
+\label{fig:diodekrets_aktiv}
+\end{figure}
+
+
+
+\noindent
+\[
+\begin{aligned}
+    U_O &= 10V - 0.7V - 0.3V \\
+    U_O &= 9V \\
+    I &= \frac{3V}{3k\Omega} \\
+    I &= 1.0mA
+\end{aligned}
+\]
+
+\clearpage
+
+\subsection{b)}
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz}[american voltages]
+
+    % Nodes
+    \node[circle, draw=black, fill=none, thick, inner sep=2pt] (V1) at (-4,0) {};
+    \node[circle, fill=black, inner sep=0pt] (N1) at (-2,0) {};
+    \node[circle, fill=black, inner sep=0pt] (T1) at (-2,1.5) {};
+    \node[circle, fill=black, inner sep=0pt] (T2) at (0,1.5) {};
+    \node[circle, fill=black, inner sep=0pt] (T3) at (2,1.5) {};
+    \node[circle, fill=black, inner sep=0pt] (B1) at (-2,-1.5) {};
+    \node[circle, fill=black, inner sep=0pt] (B2) at (0,-1.5) {};
+    \node[circle, fill=black, inner sep=0pt] (N2) at (2,0) {};
+    \node[circle, fill=black, inner sep=0pt] (N3) at (2,-1.5) {};
+    \node[circle, draw=black, fill=none, thick, inner sep=2pt] (V2) at (3.5,0) {};
+
+    % Labels
+    \node[left] at (V1) {+10V};
+    \node[right] at (V2) {$U_0$};
+
+    % Left input wire
+    \draw (V1) to[short] (N1);
+
+    % Upper branch
+    \draw (N1) -- (T1);
+    \draw (T1) to[D, l_=Si] (T2);
+    \draw (T2) to[R=$2\,\mathrm{k}\Omega$] (T3);
+
+    % Lower branch
+    \draw (N1) -- (B1);
+    \draw (B1) to[D, l=Si] (B2);
+    \draw (B2) to[R=$2\,\mathrm{k}\Omega$] (N3);
+
+    % Right vertical connection
+    \draw (N2) -- (V2);
+    \draw (N2) -- (N3);
+    \draw (T3) -- (N2);
+
+    % Resistor to ground
+    \draw (N3) to[R=$2\,\mathrm{k}\Omega$] (2,-3.2)
+          node[ground]{};
+
+    % Current arrow on top branch
+    \draw[->] (-2, 2.2) -- (-1,2.2) node[midway, above] {$I$};
+
+\end{circuitikz}
+\caption{Diode circuit with two parallel branches and a load resistor to ground.}
+\label{fig:diode_parallel_resistors}
+\end{figure}
+
+As the $+10V$ rises, $U_0$ stays at grounding ($0V$) since theres no current to change it through the resistor. The voltage drop over both branches are the same and the diodes will open at input voltage $0.7V$.
