@@ -1,6 +1,6 @@
-\section{Task 1}
+\section*{Task 1}
 
-\subsection{a)}
+\subsection*{a.}
 
 \begin{figure}[H]
 \centering
@@ -41,12 +41,11 @@
     \draw (N2) to[R=$3\,\mathrm{k}\Omega$] (V2);
 
 \end{circuitikz}
-\caption{Diodekrets med parallelle grener og seriemotstand.}
-\label{fig:diodekrets}
+\caption{Diode circuit.}
 \end{figure}
 
 \noindent
-Since theres a definite enough voltage coming from the node on the left we can assume the first diode turns on and current goes. In the parallell branch we have two diodes, since the voltage difference over the parallell must equal, the $Ge$ diode must open first since it has lower threshold at $0.3V$ rather than $0.7$. The circuit change state to as shown under.
+Since theres a definite enough voltage coming from the node on the left we can assume the first diode turns on and current goes. In the parallell branch we have two diodes, since the voltage difference over the parallell must equal, the $Ge$ diode must open first since it has lower threshold at $0.3V$ rather than $0.7V$. The circuit change state to as shown under.
 
 \begin{figure}[H]
 \centering
@@ -91,7 +90,7 @@ Since theres a definite enough voltage coming from the node on the left we can a
     \draw (N2) to[R=$3\,\mathrm{k}\Omega$] (V2);
 
 \end{circuitikz}
-\caption{Diodekrets med aktiv Ge-diode og sperret Si-diode.}
+\caption{Active diode circuit.}
 \label{fig:diodekrets_aktiv}
 \end{figure}
 
@@ -109,7 +108,7 @@ Since theres a definite enough voltage coming from the node on the left we can a
 
 \clearpage
 
-\subsection{b)}
+\subsection*{b.}
 
 \begin{figure}[H]
 \centering
@@ -161,4 +160,12 @@ Since theres a definite enough voltage coming from the node on the left we can a
 \label{fig:diode_parallel_resistors}
 \end{figure}
 
-As the $+10V$ rises, $U_0$ stays at grounding ($0V$) since theres no current to change it through the resistor. The voltage drop over both branches are the same and the diodes will open at input voltage $0.7V$.
+As the $+10V$ rises, $U_0$ stays at grounding ($0V$) since theres no current to change it through the resistor. The voltage drop over both branches are the same and the diodes will open at input voltage $0.7V$. We can combine the two branches, the diodes both acts as a $0.7V$ and the resistors can be combined to $1k\Omega$. We then have a voltage divider, which we can calculate $U_0$ and the total current, $I$.
+\[
+\begin{gathered}
+    U_0 = \left(10V - 0.7V\right)\frac{2k\Omega}{1k\Omega + 2k\Omega} \\
+    U_0 = 6.2V \\
+    I = \frac{9.3V}{1k\Omega + 2k\Omega} \\
+    I = 3.1mA
+\end{gathered}
+\]

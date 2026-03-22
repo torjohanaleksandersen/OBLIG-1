@@ -1,6 +1,6 @@
-\section{Task 3}
+\section*{Task 3}
 
-\subsection{a)}
+\subsection*{a.}
 
 \begin{figure}[H]
 \centering
@@ -13,12 +13,12 @@
     \node[circle, fill=black, inner sep=0pt] (Left) at (-2,0) {};
 
     % Source (input) inside bridge
-    \draw (Top) to[open, v^=$U_i$] (Bottom);
+    \draw (0.2, 2) to[open, v^=$U_i$] (0.2, -2);
 
     % Diodes (bridge)
     \draw (Top) to[D, l=$D_1$] (Right);
-    \draw (Right) to[D, l=$D_2$] (Bottom);
-    \draw (Bottom) to[D, l=$D_3$] (Left);
+    \draw (Bottom) to[D, l=$D_2$] (Right);
+    \draw (Left) to[D, l=$D_3$] (Bottom);
     \draw (Left) to[D, l=$D_4$] (Top);
 
     % Output resistor
@@ -37,15 +37,14 @@
 
     \node[ground] at (OutBot1) {};
 
-    \draw[->, thick] (Top) -- (Right);
-    \draw[->, thick] (Right) -- (OutTop1);
-    \draw[->, thick] (OutBot1) -- (OutBot2);
-    \draw[->, thick] (Left) -- (Bottom);
-    \draw[->, thick] (Bottom) -- (Top);
+    \draw[->, very thick] (Top) -- (Right);
+    \draw[->, very thick] (Right) -- (OutTop1);
+    \draw[->, very thick] (OutBot1) -- (OutBot2);
+    \draw[->, very thick] (Left) -- (Bottom);
+    \draw[->, very thick] (Bottom) -- (Top);
 
 \end{circuitikz}
 \caption{Current direction in positive cycle}
-\label{fig:bridge_rectifier}
 \end{figure}
 
 \begin{figure}[H]
@@ -59,12 +58,12 @@
     \node[circle, fill=black, inner sep=0pt] (Left) at (-2,0) {};
 
     % Source (input) inside bridge
-    \draw (Top) to[open, v^=$U_i$] (Bottom);
+    \draw (0.2, -2) to[open, v^=$U_i$] (0.2, 2);
 
     % Diodes (bridge)
     \draw (Top) to[D, l=$D_1$] (Right);
-    \draw (Right) to[D, l=$D_2$] (Bottom);
-    \draw (Bottom) to[D, l=$D_3$] (Left);
+    \draw (Bottom) to[D, l=$D_2$] (Right);
+    \draw (Left) to[D, l=$D_3$] (Bottom);
     \draw (Left) to[D, l=$D_4$] (Top);
 
     % Output resistor
@@ -83,15 +82,14 @@
 
     \node[ground] at (OutBot1) {};
 
-    \draw[->, thick] (Bottom) -- (Right);
-    \draw[->, thick] (Right) -- (OutTop1);
-    \draw[->, thick] (OutBot1) -- (OutBot2);
-    \draw[->, thick] (Left) -- (Top);
-    \draw[->, thick] (Top) -- (Bottom);
+    \draw[->, very thick] (Bottom) -- (Right);
+    \draw[->, very thick] (Right) -- (OutTop1);
+    \draw[->, very thick] (OutBot1) -- (OutBot2);
+    \draw[->, very thick] (Left) -- (Top);
+    \draw[->, very thick] (Top) -- (Bottom);
 
 \end{circuitikz}
 \caption{Current direction in negative cycle}
-\label{fig:bridge_rectifier}
 \end{figure}
 
 
@@ -126,7 +124,7 @@ Current in both cases flow in the same direction through the resistor, $R$. The 
 \caption{Voltage over resistor.}
 \end{figure}
 
-\subsection{b)}
+\subsection*{b.}
 
 \begin{figure}[H]
 \centering
@@ -139,7 +137,7 @@ Current in both cases flow in the same direction through the resistor, $R$. The 
     \node[circle, fill=black, inner sep=0pt] (Left) at (-2,0) {};
 
     % Source (input) inside bridge
-    \draw (Top) to[open, v^=$U_i$] (Bottom);
+    \draw (0.2, 2) to[open, v^=$U_i$] (0.2, -2);
 
     % Diodes (bridge)
     \draw (Top) to[D, l=$D_1$] (Left);
@@ -163,15 +161,14 @@ Current in both cases flow in the same direction through the resistor, $R$. The 
 
     \node[ground] at (OutBot1) {};
 
-    \draw[->, thick] (Top) -- (Left);
-    \draw[->, thick] (OutTop1) -- (Right);
-    \draw[->, thick] (OutBot2) -- (OutBot1);
-    \draw[->, thick] (Right) -- (Bottom);
-    \draw[->, thick] (Bottom) -- (Top);
+    \draw[->, very thick] (Top) -- (Left);
+    \draw[->, very thick] (OutTop1) -- (Right);
+    \draw[->, very thick] (OutBot2) -- (OutBot1);
+    \draw[->, very thick] (Right) -- (Bottom);
+    \draw[->, very thick] (Bottom) -- (Top);
 
 \end{circuitikz}
 \caption{Current direction in positive cycle}
-\label{fig:bridge_rectifier}
 \end{figure}
 
 
@@ -186,7 +183,7 @@ Current in both cases flow in the same direction through the resistor, $R$. The 
     \node[circle, fill=black, inner sep=0pt] (Left) at (-2,0) {};
 
     % Source (input) inside bridge
-    \draw (Top) to[open, v^=$U_i$] (Bottom);
+    \draw (0.2, -2) to[open, v^=$U_i$] (0.2, 2);
 
     % Diodes (bridge)
     \draw (Top) to[D, l=$D_1$] (Left);
@@ -210,11 +207,11 @@ Current in both cases flow in the same direction through the resistor, $R$. The 
 
     \node[ground] at (OutBot1) {};
 
-    \draw[->, thick] (Bottom) -- (Left);
-    \draw[->, thick] (OutTop1) -- (Right);
-    \draw[->, thick] (OutBot2) -- (OutBot1);
-    \draw[->, thick] (Right) -- (Top);
-    \draw[->, thick] (Top) -- (Bottom);
+    \draw[->, very thick] (Bottom) -- (Left);
+    \draw[->, very thick] (OutTop1) -- (Right);
+    \draw[->, very thick] (OutBot2) -- (OutBot1);
+    \draw[->, very thick] (Right) -- (Top);
+    \draw[->, very thick] (Top) -- (Bottom);
 
 \end{circuitikz}
 \caption{Current direction in negative cycle}
